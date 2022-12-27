@@ -1,0 +1,109 @@
+nlw copa
+
+***setup backend
+npm init -y
+npm i typescript -D
+npx tsc --init
+*target: es2020
+npm i fastify
+npm i tsx -D
+*script dev: "watch..."
+npm i prisma -D
+npm i @prisma/client
+npx prisma init --datasource-provider SQLite
+*criar model
+npx prisma migrate dev
+npx prisma studio
+npm i prisma-erd-generator @mermaid-js/mermaid-cli -D
+*cria generator erd
+npx prisma generate
+npm i @fastify/cors
+npx prisma db seed
+npm i zod
+npm i short-unique-id
+npm i @fastify/jwt
+
+
+***setup front end
+npx create-next-app@latest --use-npm
+npm i -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+*config tailwind.config.js
+
+*index.html
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+
+content: ["./src/**/*.tsx"],
+
+    extend: {
+      fontFamily: {
+        sans: "Roboto, sans-serif",
+      },
+
+      backgroundImage: {
+        app: "url(/app-bg.png)",
+      },
+   }
+   
+*global.css
+
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+*enable postcss language
+
+
+npm i axios
+
+***setup mobile
+npx create-expo-app mobile
+npx expo start
+npm install native-base --force
+
+*edit packaje.json
+  "overrides":{
+    "react": "18.0.0"
+  },
+
+npx expo install react-native-svg@12.1.1
+npx expo install react-native-safe-area-context@3.3.2
+npx expo install expo-font @expo-google-fonts/roboto
+npm i react-native-svg-transformer
+npx expo install expo-auth-session expo-random
+npx expo install expo-web-browser
+
+*app.json
+
+    "scheme": "nlwcopamobile",
+    
+    
+npm i --save phosphor-react-native
+npm install @react-navigation/native
+npx expo install react-native-screens react-native-safe-area-context
+npm i country-list
+npm i --save-dev @types/country-list
+npm install --save react-native-country-flag
+npm install @react-navigation/bottom-tabs
+npm i axios
+npm install dayjs
+npm i dotenv babel-plugin-inline-dotenv
+
+*babel.config.js
+module.exports = function (api) {
+  api.cache(true);
+  return {
+    presets: ["babel-preset-expo"],
+    plugins: ["inline-dotenv"],
+  };
+};
+
+npx expo start --clear
+
